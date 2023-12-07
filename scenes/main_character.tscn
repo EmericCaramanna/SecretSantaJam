@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://7a4qtjvqsgpm"]
+
+[ext_resource type="Texture2D" uid="uid://wi8r715rlwwo" path="res://assets/white3232.png" id="1_n6lee"]
+[ext_resource type="Script" path="res://scenes/scripts/main_character.gd" id="1_uxod4"]
+[ext_resource type="Texture2D" uid="uid://8nyuddm6idrp" path="res://assets/light.png" id="3_qph5j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ye2tn"]
+size = Vector2(16, 16)
+
+[node name="main_character" type="CharacterBody2D"]
+script = ExtResource("1_uxod4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_n6lee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ye2tn")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.741176, 0.192157, 0.2, 1)
+shadow_enabled = true
+texture = ExtResource("3_qph5j")
