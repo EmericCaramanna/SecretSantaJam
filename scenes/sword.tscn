@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpt8qhs5d8dx7"]
+
+[ext_resource type="Texture2D" uid="uid://qmroc5ru7qor" path="res://assets/Sword.png" id="1_07m5w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sn6xl"]
+radius = 39.0
+height = 238.0
+
+[node name="sword" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(120, 0)
+texture = ExtResource("1_07m5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(184, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sn6xl")
