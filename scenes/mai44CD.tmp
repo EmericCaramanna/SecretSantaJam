@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://7a4qtjvqsgpm"]
+[gd_scene load_steps=14 format=3 uid="uid://7a4qtjvqsgpm"]
 
 [ext_resource type="Script" path="res://scenes/scripts/main_character.gd" id="1_uxod4"]
 [ext_resource type="Texture2D" uid="uid://2wjfhgf8kr03" path="res://assets/sprite_sheet.png" id="2_maker"]
@@ -49,7 +49,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ye2tn"]
 size = Vector2(11, 14)
 
-[sub_resource type="Animation" id="Animation_t4el6"]
+[sub_resource type="Animation" id="Animation_8ofot"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -61,11 +61,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-1.5708]
+"values": [-1.39626]
 }
 
-[sub_resource type="Animation" id="Animation_d576s"]
-resource_name = "attack_right"
+[sub_resource type="Animation" id="Animation_4478v"]
+resource_name = "attack"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -74,67 +74,16 @@ tracks/0/path = NodePath("weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-1.5708, 0.0, 1.5708]
+"values": [-1.39626, 1.48353]
 }
 
-[sub_resource type="Animation" id="Animation_2o5dp"]
-resource_name = "attack_left"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("weapon:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-1.5708, -3.14159, -4.71239]
-}
-
-[sub_resource type="Animation" id="Animation_kgiwc"]
-resource_name = "attack_top"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("weapon:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-3.14159, -1.5708, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_sm8ei"]
-resource_name = "attack_down"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("weapon:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.5708, 3.14159]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f3cjg"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yh8kj"]
 _data = {
-"RESET": SubResource("Animation_t4el6"),
-"attack_down": SubResource("Animation_sm8ei"),
-"attack_left": SubResource("Animation_2o5dp"),
-"attack_right": SubResource("Animation_d576s"),
-"attack_top": SubResource("Animation_kgiwc")
+"RESET": SubResource("Animation_8ofot"),
+"attack": SubResource("Animation_4478v")
 }
 
 [node name="main_character" type="CharacterBody2D"]
@@ -155,13 +104,12 @@ shadow_enabled = true
 texture = ExtResource("3_qph5j")
 
 [node name="weapon" type="Node2D" parent="."]
-position = Vector2(5, 0)
-rotation = 5.49779
+rotation = -1.39626
 
 [node name="sword" parent="weapon" instance=ExtResource("4_y5fry")]
 scale = Vector2(0.03, 0.03)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="animations" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_f3cjg")
+"": SubResource("AnimationLibrary_yh8kj")
 }
