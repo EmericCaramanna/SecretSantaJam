@@ -22,7 +22,6 @@ signal Measure(position)
 func _ready():
 	sec_per_beat = 60.0 / bpm
 
-
 func _physics_process(delta):
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()

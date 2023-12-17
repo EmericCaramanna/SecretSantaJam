@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://1affp50h5max"]
 
-[ext_resource type="Script" path="res://scenes/conductor.gd" id="1_acru1"]
+[ext_resource type="Script" path="res://scenes/scripts/conductor.gd" id="1_sl60q"]
 
 [node name="Conductor" type="AudioStreamPlayer"]
-script = ExtResource("1_acru1")
+script = ExtResource("1_sl60q")
 
 [node name="StartTimer" type="Timer" parent="."]

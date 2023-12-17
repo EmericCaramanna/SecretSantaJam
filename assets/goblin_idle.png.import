@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qmroc5ru7qor"
-path="res://.godot/imported/Sword.png-e1433e56e442e5f86bdf863c21ad01f1.ctex"
+uid="uid://bp1w347cwuyrb"
+path="res://.godot/imported/goblin_idle.png-a8e94e03592243b0ef0358295648a3d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sword.png"
-dest_files=["res://.godot/imported/Sword.png-e1433e56e442e5f86bdf863c21ad01f1.ctex"]
+source_file="res://assets/goblin_idle.png"
+dest_files=["res://.godot/imported/goblin_idle.png-a8e94e03592243b0ef0358295648a3d7.ctex"]
 
 [params]
 

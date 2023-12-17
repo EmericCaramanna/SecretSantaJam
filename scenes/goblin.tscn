@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://3neo5io1q83b"]
+
+[ext_resource type="Texture2D" uid="uid://bp1w347cwuyrb" path="res://assets/goblin_idle.png" id="1_y3q6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6u6d"]
+atlas = ExtResource("1_y3q6v")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sqqk"]
+atlas = ExtResource("1_y3q6v")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh26l"]
+atlas = ExtResource("1_y3q6v")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7s23"]
+atlas = ExtResource("1_y3q6v")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8xy6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6u6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sqqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh26l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7s23")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="goblin" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n8xy6")
+autoplay = "default"
+frame_progress = 0.258116
+flip_h = true
