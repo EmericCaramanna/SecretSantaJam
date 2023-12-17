@@ -1,37 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://3neo5io1q83b"]
+[gd_scene load_steps=9 format=3 uid="uid://3neo5io1q83b"]
 
-[ext_resource type="Texture2D" uid="uid://bp1w347cwuyrb" path="res://assets/goblin_idle.png" id="1_y3q6v"]
+[ext_resource type="Texture2D" uid="uid://bdnnxqqs6lt02" path="res://assets/Idle.png" id="1_4812w"]
+[ext_resource type="PackedScene" uid="uid://1affp50h5max" path="res://scenes/conductor.tscn" id="2_jx8te"]
+[ext_resource type="AudioStream" uid="uid://etw1odk70mw7" path="res://assets/DavidKBD - InterstellarPack - 04 - Horsehead Nebula.ogg" id="3_q5or1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i6u6d"]
-atlas = ExtResource("1_y3q6v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq7xl"]
+atlas = ExtResource("1_4812w")
 region = Rect2(0, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2sqqk"]
-atlas = ExtResource("1_y3q6v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_b010l"]
+atlas = ExtResource("1_4812w")
 region = Rect2(150, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jh26l"]
-atlas = ExtResource("1_y3q6v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyke5"]
+atlas = ExtResource("1_4812w")
 region = Rect2(300, 0, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7s23"]
-atlas = ExtResource("1_y3q6v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2lk8"]
+atlas = ExtResource("1_4812w")
 region = Rect2(450, 0, 150, 150)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_n8xy6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxkru"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i6u6d")
+"texture": SubResource("AtlasTexture_dq7xl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2sqqk")
+"texture": SubResource("AtlasTexture_b010l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jh26l")
+"texture": SubResource("AtlasTexture_hyke5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m7s23")
+"texture": SubResource("AtlasTexture_o2lk8")
 }],
 "loop": true,
 "name": &"default",
@@ -41,7 +43,12 @@ animations = [{
 [node name="goblin" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_n8xy6")
+sprite_frames = SubResource("SpriteFrames_nxkru")
 autoplay = "default"
-frame_progress = 0.258116
+frame_progress = 0.318021
 flip_h = true
+
+[node name="Conductor" parent="." instance=ExtResource("2_jx8te")]
+stream = ExtResource("3_q5or1")
+autoplay = true
+songBpm = 132
