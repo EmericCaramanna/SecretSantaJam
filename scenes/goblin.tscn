@@ -1,27 +1,90 @@
-[gd_scene load_steps=9 format=3 uid="uid://3neo5io1q83b"]
+[gd_scene load_steps=19 format=3 uid="uid://3neo5io1q83b"]
 
-[ext_resource type="Texture2D" uid="uid://bdnnxqqs6lt02" path="res://assets/Idle.png" id="1_4812w"]
+[ext_resource type="Script" path="res://scenes/goblin.gd" id="1_7uo88"]
 [ext_resource type="PackedScene" uid="uid://1affp50h5max" path="res://scenes/conductor.tscn" id="2_jx8te"]
+[ext_resource type="Texture2D" uid="uid://bdnnxqqs6lt02" path="res://assets/goblin_idle.png" id="2_lk4v3"]
+[ext_resource type="Texture2D" uid="uid://bxcrfjlsggxx5" path="res://assets/goblin_attack.png" id="2_umktp"]
 [ext_resource type="AudioStream" uid="uid://etw1odk70mw7" path="res://assets/DavidKBD - InterstellarPack - 04 - Horsehead Nebula.ogg" id="3_q5or1"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtwke"]
+atlas = ExtResource("2_umktp")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixos5"]
+atlas = ExtResource("2_umktp")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2x2x"]
+atlas = ExtResource("2_umktp")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_debxk"]
+atlas = ExtResource("2_umktp")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om3hq"]
+atlas = ExtResource("2_umktp")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkr0p"]
+atlas = ExtResource("2_umktp")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wa3m"]
+atlas = ExtResource("2_umktp")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aysd0"]
+atlas = ExtResource("2_umktp")
+region = Rect2(1050, 0, 150, 150)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dq7xl"]
-atlas = ExtResource("1_4812w")
+atlas = ExtResource("2_lk4v3")
 region = Rect2(0, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b010l"]
-atlas = ExtResource("1_4812w")
+atlas = ExtResource("2_lk4v3")
 region = Rect2(150, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hyke5"]
-atlas = ExtResource("1_4812w")
+atlas = ExtResource("2_lk4v3")
 region = Rect2(300, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2lk8"]
-atlas = ExtResource("1_4812w")
+atlas = ExtResource("2_lk4v3")
 region = Rect2(450, 0, 150, 150)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nxkru"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtwke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixos5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2x2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_debxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om3hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkr0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wa3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aysd0")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dq7xl")
@@ -36,19 +99,25 @@ animations = [{
 "texture": SubResource("AtlasTexture_o2lk8")
 }],
 "loop": true,
-"name": &"default",
-"speed": 8.0
+"name": &"idle",
+"speed": 10.0
 }]
 
 [node name="goblin" type="Node2D"]
+script = ExtResource("1_7uo88")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nxkru")
-autoplay = "default"
-frame_progress = 0.318021
+animation = &"attack"
+autoplay = "idle"
 flip_h = true
 
 [node name="Conductor" parent="." instance=ExtResource("2_jx8te")]
 stream = ExtResource("3_q5or1")
-autoplay = true
 songBpm = 132
+
+[node name="spawning" type="Node2D" parent="."]
+position = Vector2(-28, 6)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="beatSignal" from="Conductor" to="." method="_on_conductor_beat_signal"]
