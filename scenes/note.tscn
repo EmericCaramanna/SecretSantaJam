@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cytldd6rmcue5"]
 
-[ext_resource type="Script" path="res://scenes/note.gd" id="1_3pubj"]
 [ext_resource type="Texture2D" uid="uid://j23uqvu0kuc6" path="res://assets/sword_projectile.png" id="1_5pvni"]
+[ext_resource type="Script" path="res://scenes/scripts/note.gd" id="1_8vrqc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4uvtf"]
 atlas = ExtResource("1_5pvni")
@@ -76,7 +76,7 @@ animations = [{
 radius = 12.0104
 
 [node name="note" type="Area2D"]
-script = ExtResource("1_3pubj")
+script = ExtResource("1_8vrqc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t7b8a")

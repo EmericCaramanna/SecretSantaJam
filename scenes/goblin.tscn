@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://3neo5io1q83b"]
+[gd_scene load_steps=27 format=3 uid="uid://3neo5io1q83b"]
 
-[ext_resource type="Script" path="res://scenes/goblin.gd" id="1_7uo88"]
-[ext_resource type="PackedScene" uid="uid://1affp50h5max" path="res://scenes/conductor.tscn" id="2_jx8te"]
+[ext_resource type="Script" path="res://scenes/scripts/goblin.gd" id="1_hmmqv"]
 [ext_resource type="Texture2D" uid="uid://bdnnxqqs6lt02" path="res://assets/goblin_idle.png" id="2_lk4v3"]
 [ext_resource type="Texture2D" uid="uid://bxcrfjlsggxx5" path="res://assets/goblin_attack.png" id="2_umktp"]
-[ext_resource type="AudioStream" uid="uid://etw1odk70mw7" path="res://assets/DavidKBD - InterstellarPack - 04 - Horsehead Nebula.ogg" id="3_q5or1"]
+[ext_resource type="Texture2D" uid="uid://bwb4p6lxibpp6" path="res://assets/goblin_run.png" id="4_g0o52"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jtwke"]
 atlas = ExtResource("2_umktp")
@@ -54,6 +53,38 @@ region = Rect2(300, 0, 150, 150)
 atlas = ExtResource("2_lk4v3")
 region = Rect2(450, 0, 150, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_en8cj"]
+atlas = ExtResource("4_g0o52")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0pmt"]
+atlas = ExtResource("4_g0o52")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p1y8"]
+atlas = ExtResource("4_g0o52")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyh37"]
+atlas = ExtResource("4_g0o52")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tl1i"]
+atlas = ExtResource("4_g0o52")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt1w5"]
+atlas = ExtResource("4_g0o52")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1laui"]
+atlas = ExtResource("4_g0o52")
+region = Rect2(900, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5umb"]
+atlas = ExtResource("4_g0o52")
+region = Rect2(1050, 0, 150, 150)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nxkru"]
 animations = [{
 "frames": [{
@@ -101,23 +132,53 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_en8cj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0pmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p1y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyh37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tl1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt1w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1laui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5umb")
+}],
+"loop": true,
+"name": &"running",
+"speed": 16.0
 }]
 
-[node name="goblin" type="Node2D"]
-script = ExtResource("1_7uo88")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yc7o"]
+size = Vector2(32, 36)
+
+[node name="goblin" type="Area2D"]
+script = ExtResource("1_hmmqv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nxkru")
-animation = &"attack"
-autoplay = "idle"
+animation = &"running"
+autoplay = "running"
+frame_progress = 0.21997
 flip_h = true
 
-[node name="Conductor" parent="." instance=ExtResource("2_jx8te")]
-stream = ExtResource("3_q5or1")
-songBpm = 132
-
-[node name="spawning" type="Node2D" parent="."]
-position = Vector2(-28, 6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 8)
+shape = SubResource("RectangleShape2D_4yc7o")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="beatSignal" from="Conductor" to="." method="_on_conductor_beat_signal"]

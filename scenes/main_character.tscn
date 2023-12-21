@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bmeb51fpcfjxt"]
+[gd_scene load_steps=30 format=3 uid="uid://bmeb51fpcfjxt"]
 
 [ext_resource type="Script" path="res://scenes/scripts/main_character.gd" id="1_uxod4"]
 [ext_resource type="Texture2D" uid="uid://e1plin8c8etw" path="res://assets/knight_attack.png" id="2_q1t4e"]
@@ -191,15 +191,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8oyj"]
-size = Vector2(6, 5.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8nh8"]
-size = Vector2(14, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tctrf"]
-size = Vector2(24, 24)
-
 [node name="main_character" type="Node2D"]
 position = Vector2(-1, 2)
 script = ExtResource("1_uxod4")
@@ -210,28 +201,4 @@ animation = &"attack"
 autoplay = "idle"
 frame = 1
 
-[node name="PerfectArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectArea"]
-position = Vector2(45, 26)
-shape = SubResource("RectangleShape2D_s8oyj")
-
-[node name="GoodArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GoodArea"]
-position = Vector2(45, 26)
-shape = SubResource("RectangleShape2D_y8nh8")
-
-[node name="OkayArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OkayArea"]
-position = Vector2(45, 26)
-shape = SubResource("RectangleShape2D_tctrf")
-
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="PerfectArea" to="." method="_on_perfect_area_body_entered"]
-[connection signal="body_exited" from="PerfectArea" to="." method="_on_perfect_area_body_exited"]
-[connection signal="body_entered" from="GoodArea" to="." method="_on_good_area_body_entered"]
-[connection signal="body_exited" from="GoodArea" to="." method="_on_good_area_body_exited"]
-[connection signal="body_entered" from="OkayArea" to="." method="_on_okay_area_body_entered"]
-[connection signal="body_exited" from="OkayArea" to="." method="_on_okay_area_body_exited"]

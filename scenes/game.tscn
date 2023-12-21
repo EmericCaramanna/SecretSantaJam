@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt0va7bv1wuyj"]
+
+[ext_resource type="PackedScene" uid="uid://1affp50h5max" path="res://scenes/conductor.tscn" id="1_h46ve"]
+[ext_resource type="Script" path="res://scenes/scripts/game.gd" id="1_rlt52"]
+[ext_resource type="AudioStream" uid="uid://cqg1kn5tfri7o" path="res://assets/DavidKBD - Concerto Pack - 04 - Symphony No. 9 in E Minor Op. 95 From the New World IV (Dvorak).ogg" id="3_ciegl"]
+
+[node name="game" type="Node"]
+script = ExtResource("1_rlt52")
+
+[node name="Conductor" parent="." instance=ExtResource("1_h46ve")]
+stream = ExtResource("3_ciegl")
+songBpm = 140
+beatsBeforeStart = 8
+
+[node name="top" type="Node2D" parent="."]
+position = Vector2(1000, 125)
+
+[node name="mid" type="Node2D" parent="."]
+position = Vector2(1000, 325)
+
+[node name="down" type="Node2D" parent="."]
+position = Vector2(1000, 525)
+
+[connection signal="beatSignal" from="Conductor" to="." method="_on_conductor_beat_signal"]
+[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]

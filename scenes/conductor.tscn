@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://1affp50h5max"]
 
-[ext_resource type="Script" path="res://scenes/conductor.gd" id="1_0iglm"]
+[ext_resource type="Script" path="res://scenes/scripts/conductor.gd" id="1_0iglm"]
 
 [node name="Conductor" type="AudioStreamPlayer"]
 volume_db = -20.0
