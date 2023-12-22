@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scenes/scripts/key.gd" id="1_wure8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqqc0"]
-size = Vector2(6, 5.75)
+size = Vector2(6, 6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6mmx"]
-size = Vector2(14, 14)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xh4f"]
+size = Vector2(12, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcsu3"]
-size = Vector2(24, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpk87"]
+size = Vector2(18, 18)
 
 [node name="key" type="Node2D"]
 script = ExtResource("1_wure8")
@@ -22,12 +22,12 @@ shape = SubResource("RectangleShape2D_sqqc0")
 [node name="GoodArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoodArea"]
-shape = SubResource("RectangleShape2D_s6mmx")
+shape = SubResource("RectangleShape2D_4xh4f")
 
 [node name="OkayArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OkayArea"]
-shape = SubResource("RectangleShape2D_fcsu3")
+shape = SubResource("RectangleShape2D_cpk87")
 
 [connection signal="body_entered" from="PerfectArea" to="." method="_on_perfect_area_body_entered"]
 [connection signal="body_exited" from="PerfectArea" to="." method="_on_perfect_area_body_exited"]

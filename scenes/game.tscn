@@ -10,7 +10,6 @@ script = ExtResource("1_rlt52")
 [node name="Conductor" parent="." instance=ExtResource("1_h46ve")]
 stream = ExtResource("3_ciegl")
 songBpm = 140
-beatsBeforeStart = 8
 
 [node name="top" type="Node2D" parent="."]
 position = Vector2(1000, 125)

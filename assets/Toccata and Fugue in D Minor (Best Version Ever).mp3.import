@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7vqufw1rvs67"
+path="res://.godot/imported/Toccata and Fugue in D Minor (Best Version Ever).mp3-de5891719ecb8974634aff6c7754c2df.mp3str"
+
+[deps]
+
+source_file="res://assets/Toccata and Fugue in D Minor (Best Version Ever).mp3"
+dest_files=["res://.godot/imported/Toccata and Fugue in D Minor (Best Version Ever).mp3-de5891719ecb8974634aff6c7754c2df.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

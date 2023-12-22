@@ -6,7 +6,7 @@ extends AudioStreamPlayer
 # beats per minute
 #This is determined by the song you're trying to sync up to
 @export var songBpm: int
-@export var beatsBeforeStart: int
+var beatsBeforeStart: int
 
 #The number of seconds for each song beat
 var secPerBeat: float

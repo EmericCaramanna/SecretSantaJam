@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://xpusls4outwk"]
+[gd_scene load_steps=7 format=3 uid="uid://xpusls4outwk"]
 
 [ext_resource type="Texture2D" uid="uid://wi8r715rlwwo" path="res://assets/white3232.png" id="1_egshh"]
 [ext_resource type="Script" path="res://scenes/scripts/world.gd" id="1_maskn"]
-[ext_resource type="PackedScene" uid="uid://bt0va7bv1wuyj" path="res://scenes/game.tscn" id="2_8kw6q"]
 [ext_resource type="PackedScene" uid="uid://bmeb51fpcfjxt" path="res://scenes/main_character.tscn" id="3_8wu70"]
+[ext_resource type="PackedScene" uid="uid://1affp50h5max" path="res://scenes/conductor.tscn" id="5_6llm8"]
 [ext_resource type="PackedScene" uid="uid://coshnau553bd0" path="res://scenes/key.tscn" id="5_xoayn"]
+[ext_resource type="AudioStream" uid="uid://etw1odk70mw7" path="res://assets/DavidKBD - InterstellarPack - 04 - Horsehead Nebula.ogg" id="6_lfo71"]
 
 [node name="world" type="Node"]
 script = ExtResource("1_maskn")
@@ -15,28 +16,37 @@ position = Vector2(645, 954)
 scale = Vector2(218.563, 156.219)
 texture = ExtResource("1_egshh")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="ScoreLabel" type="RichTextLabel" parent="."]
 offset_right = 1152.0
 offset_bottom = 40.0
-text = "Score :"
+text = "Score: 0"
+
+[node name="ComboLabel" type="RichTextLabel" parent="."]
+offset_top = 24.0
+offset_right = 1151.0
+offset_bottom = 64.0
+text = "Combo x1"
 
 [node name="main_character" parent="." instance=ExtResource("3_8wu70")]
 position = Vector2(85, 100)
 scale = Vector2(2, 2)
 
-[node name="game" parent="." instance=ExtResource("2_8kw6q")]
+[node name="Conductor" parent="." instance=ExtResource("5_6llm8")]
+stream = ExtResource("6_lfo71")
+songBpm = 133
+
+[node name="top" parent="." instance=ExtResource("5_xoayn")]
+position = Vector2(172, 154)
+scale = Vector2(4, 4)
 
 [node name="mid" parent="." instance=ExtResource("5_xoayn")]
-position = Vector2(175, 350)
-scale = Vector2(2, 2)
+position = Vector2(170, 350)
+scale = Vector2(4, 4)
 key = "mid"
 
 [node name="down" parent="." instance=ExtResource("5_xoayn")]
-position = Vector2(175, 550)
-scale = Vector2(2, 2)
+position = Vector2(170, 550)
+scale = Vector2(4, 4)
 key = "down"
 
-[node name="top" parent="." instance=ExtResource("5_xoayn")]
-position = Vector2(175, 150)
-scale = Vector2(2, 2)
-key = "top"
+[connection signal="beatSignal" from="Conductor" to="." method="_on_conductor_beat_signal"]
