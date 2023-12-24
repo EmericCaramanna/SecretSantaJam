@@ -9,16 +9,16 @@ var rng = RandomNumberGenerator.new()
 @onready var down = $down
 @onready var mid = $mid
 var combo = 1
+var maxCombo = 1
 @onready var combo_label = $ComboLabel
+@onready var game_over = $GameOver
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
+	game_over.hide()
 	conductor.play_with_beat_offset(8)
 	print(conductor.secPerBeat * 8) 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func increase_score(value):
 	if value == 0:
@@ -28,6 +28,8 @@ func increase_score(value):
 	score = score + value * combo
 	rich_text_label.text = str("Score: ", score)
 	combo_label.text = str("Combo x", combo)
+	if combo > maxCombo:
+		maxCombo = combo
 
 func _on_conductor_beat_signal(position):
 	var lane = rng.randi_range(0, 2)
@@ -42,3 +44,8 @@ func _on_conductor_beat_signal(position):
 	enemy_instance.global_position.y -= 10
 	enemy_instance.speed = (enemy_instance.global_position.x - 85) / 3.60902255639098
 	add_child(enemy_instance)
+
+func _on_conductor_finished():
+	get_tree().paused = true
+	game_over.show()
+	game_over.scoreLabel.text = str("Score: ", score, "\n", "Max Combo: ", maxCombo)

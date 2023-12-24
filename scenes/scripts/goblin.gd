@@ -2,7 +2,8 @@ extends Node2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var rich_text_label = $Node2D/RichTextLabel
-@onready var animation_player = $AnimationPlayer
+@onready var animation_player = $Node2D/AnimationPlayer
+
 
 var speed = 100
 var direction = Vector2.LEFT

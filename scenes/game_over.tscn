@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://djsdr5pn3ocul"]
+
+[ext_resource type="Script" path="res://GameOver.gd" id="1_rgi47"]
+[ext_resource type="FontFile" uid="uid://4v3qqdu4mg2a" path="res://assets/Vermin Vibes 1989.ttf" id="2_s1c4h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8h6h"]
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_rgi47")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l8h6h")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_s1c4h")
+theme_override_font_sizes/font_size = 135
+text = "GAME OVER!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_s1c4h")
+theme_override_font_sizes/font_size = 60
+text = "Score: 100
+Max Combo: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_s1c4h")
+theme_override_font_sizes/font_size = 60
+text = " RESTART "
+
+[node name="Home" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_s1c4h")
+theme_override_font_sizes/font_size = 60
+text = "HOME"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/Home" to="." method="_on_home_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xpusls4outwk"]
+[gd_scene load_steps=12 format=3 uid="uid://xpusls4outwk"]
 
 [ext_resource type="Script" path="res://scenes/scripts/world.gd" id="1_maskn"]
 [ext_resource type="Texture2D" uid="uid://djpkcx6jv3o13" path="res://assets/tiles_dungeon_v1.1.png" id="2_vg11x"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://coshnau553bd0" path="res://scenes/key.tscn" id="5_xoayn"]
 [ext_resource type="AudioStream" uid="uid://etw1odk70mw7" path="res://assets/DavidKBD - InterstellarPack - 04 - Horsehead Nebula.ogg" id="6_lfo71"]
 [ext_resource type="Script" path="res://scenes/countdown.gd" id="8_ukv6b"]
+[ext_resource type="PackedScene" uid="uid://djsdr5pn3ocul" path="res://scenes/game_over.tscn" id="9_kp3lj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vssuf"]
 texture = ExtResource("2_vg11x")
@@ -438,7 +439,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.0
+offset_left = -140.0
 offset_top = -34.0
 offset_right = 94.0
 offset_bottom = 37.0
@@ -450,5 +451,8 @@ text = "01:50"
 
 [node name="Timer" type="Timer" parent="countdown"]
 
+[node name="GameOver" parent="." instance=ExtResource("9_kp3lj")]
+
 [connection signal="beatSignal" from="Conductor" to="." method="_on_conductor_beat_signal"]
+[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
 [connection signal="timeout" from="countdown/Timer" to="countdown" method="_on_timer_timeout"]
