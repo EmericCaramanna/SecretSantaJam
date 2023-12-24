@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var rich_text_label = $Node2D/RichTextLabel
+@onready var animation_player = $AnimationPlayer
 
 var speed = 100
 var direction = Vector2.LEFT
@@ -16,6 +18,7 @@ func _physics_process(delta):
 func kill():
 	dead = true
 	animated_sprite_2d.play("death")
+	animation_player.play("TextAnimation")
 
-func _on_animated_sprite_2d_animation_finished():
+func _on_animation_player_animation_finished(anim_name):
 	queue_free()

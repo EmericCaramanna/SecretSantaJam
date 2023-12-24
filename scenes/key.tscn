@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://coshnau553bd0"]
+[gd_scene load_steps=6 format=3 uid="uid://coshnau553bd0"]
 
 [ext_resource type="Script" path="res://scenes/scripts/key.gd" id="1_wure8"]
+[ext_resource type="Texture2D" uid="uid://wi8r715rlwwo" path="res://assets/white3232.png" id="2_bm6l1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqqc0"]
 size = Vector2(6, 6)
@@ -16,18 +17,36 @@ script = ExtResource("1_wure8")
 
 [node name="PerfectArea" type="Area2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="PerfectArea"]
+self_modulate = Color(1, 0, 0.0156863, 0.541176)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("2_bm6l1")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectArea"]
+visible = false
 shape = SubResource("RectangleShape2D_sqqc0")
 
 [node name="GoodArea" type="Area2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="GoodArea"]
+self_modulate = Color(0.109804, 0.0784314, 1, 0.258824)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_bm6l1")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoodArea"]
+visible = false
 shape = SubResource("RectangleShape2D_4xh4f")
 
 [node name="OkayArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OkayArea"]
+visible = false
 shape = SubResource("RectangleShape2D_cpk87")
+
+[node name="Sprite2D" type="Sprite2D" parent="OkayArea"]
+self_modulate = Color(0.933333, 1, 0, 0.278431)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("2_bm6l1")
 
 [connection signal="body_entered" from="PerfectArea" to="." method="_on_perfect_area_body_entered"]
 [connection signal="body_exited" from="PerfectArea" to="." method="_on_perfect_area_body_exited"]

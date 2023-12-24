@@ -9,13 +9,16 @@ var enemy = null
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed(key):
-		if enemy != null:
+		if enemy != null && !enemy.dead:
 			if perfect:
 				get_parent().increase_score(3)
+				enemy.rich_text_label.text = "[center]PERFECT![center]"
 			elif good:
 				get_parent().increase_score(2)
+				enemy.rich_text_label.text = "[center]GOOD[center]]"
 			elif okay:
 				get_parent().increase_score(1)
+				enemy.rich_text_label.text = "[center]Okay[center]"
 			enemy.kill()
 		else:
 			get_parent().increase_score(0)

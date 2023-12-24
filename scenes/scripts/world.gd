@@ -14,6 +14,7 @@ var combo = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	conductor.play_with_beat_offset(8)
+	print(conductor.secPerBeat * 8) 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -38,5 +39,6 @@ func _on_conductor_beat_signal(position):
 	elif lane == 2:
 		enemy_instance.global_position = down.global_position
 	enemy_instance.global_position.x = 1000
-	enemy_instance.speed = (enemy_instance.global_position.x - 85) /3
+	enemy_instance.global_position.y -= 10
+	enemy_instance.speed = (enemy_instance.global_position.x - 85) / 3.60902255639098
 	add_child(enemy_instance)
